@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setStatusBar();
+    }
+
+    private void setStatusBar() {
         Window window = this.getWindow();
 //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 //设置状态栏颜色
 
-        window.setStatusBarColor(getResources().getColor(R.color.header));
+        window.setStatusBarColor(getResources().getColor(R.color.top));
 
         ViewGroup mContentView = (ViewGroup) this.findViewById(Window.ID_ANDROID_CONTENT);
         View mChildView = mContentView.getChildAt(0);
