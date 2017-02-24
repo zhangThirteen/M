@@ -19,20 +19,12 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.rounded_header_image)
-    RoundedImageView roundedHeaderImage;
-    @BindView(R.id.header_title)
-    TextView headerTitle;
-    @BindView(R.id.header_search)
-    TextView headerSearch;
-    @BindView(R.id.header)
-    LinearLayout header;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
         setStatusBar();
 

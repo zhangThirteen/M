@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
+        android:background="@color/header"
         android:weightSum="6">
 
         <LinearLayout
@@ -27,38 +28,38 @@
                 android:src="@mipmap/login"
                 app:riv_border_color="#333333"
                 app:riv_border_width="1dp"
-                app:riv_oval="true" />/>
+                app:riv_oval="true" />
+            
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:background="@color/header">
+            android:layout_weight="5"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:background="@drawable/movie_header">
+
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/search"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="1dp"
+                android:layout_gravity="center"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="movies"
-                android:textSize="@dimen/header_title_size"
-                android:textColor="@color/black"
-                android:id="@+id/header_title" />
+                android:text="movies search "
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textColor="@color/header_search_color"
+               />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="@dimen/header_search_padding"
-            android:layout_weight="1"
-            android:background="@color/header">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-               android:background="@mipmap/search"
-                android:id="@+id/header_search" />
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
