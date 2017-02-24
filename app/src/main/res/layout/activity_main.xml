@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zyy.m.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.zyy.m.MainActivity">
 
 
     <include
-        layout="@layout/include_header">
-    </include>
+        android:id="@+id/header_include"
+        layout="@layout/include_header"
+        ></include>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    </RelativeLayout>
+
 </LinearLayout>

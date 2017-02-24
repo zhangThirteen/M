@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -19,6 +20,7 @@
             >
 
             <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/rounded_header_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/header_round_padding"
@@ -41,7 +43,7 @@
                 android:text="movies"
                 android:textSize="@dimen/header_title_size"
                 android:textColor="@color/black"
-                android:id="@+id/textView" />
+                android:id="@+id/header_title" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,10 +53,12 @@
             android:padding="@dimen/header_search_padding"
             android:layout_weight="1"
             android:background="@color/header">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-               android:background="@mipmap/search"/>
+               android:background="@mipmap/search"
+                android:id="@+id/header_search" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
