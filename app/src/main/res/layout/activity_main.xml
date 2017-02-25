@@ -9,6 +9,7 @@
     <include layout="@layout/include_header" />
 
     <FrameLayout
+        android:id="@+id/main_fl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -19,43 +20,56 @@
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/bottom_main">
+
         <RadioGroup
+            android:id="@+id/main_rg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="4"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="4">
+
             <RadioButton
+                android:id="@+id/movie_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
                 android:text="Movie"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:button="@null"/>
+                android:textSize="20sp" />
+
             <RadioButton
+                android:layout_margin="5dp"
+                android:id="@+id/message_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/message_btn"
+                android:gravity="center"
                 android:text="Message"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:button="@null"/>
+                android:textSize="10sp"/>
+
             <RadioButton
+                android:id="@+id/montage_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
                 android:text="Montage"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:button="@null"/>
+                android:textSize="20sp" />
+
             <RadioButton
+                android:id="@+id/my_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="My"
+                android:button="@null"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:button="@null"/>
+                android:text="My"
+                android:textSize="20sp" />
         </RadioGroup>
     </LinearLayout>
 
