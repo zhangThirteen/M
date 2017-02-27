@@ -29,6 +29,7 @@
             android:weightSum="4">
 
             <RadioButton
+                android:layout_margin="10dp"
                 android:id="@+id/movie_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -36,8 +37,9 @@
                 android:button="@null"
                 android:checked="true"
                 android:gravity="center"
+                android:drawableTop="@drawable/message_btn"
                 android:text="Movie"
-                android:textSize="20sp" />
+                android:textSize="10sp" />
 
             <RadioButton
                 android:layout_margin="10dp"
