@@ -34,24 +34,25 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:button="@null"
+                android:checked="true"
                 android:gravity="center"
                 android:text="Movie"
                 android:textSize="20sp" />
 
             <RadioButton
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 android:id="@+id/message_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:button="@null"
-                android:checked="true"
                 android:drawableTop="@drawable/message_btn"
                 android:gravity="center"
                 android:text="Message"
                 android:textSize="10sp"/>
 
             <RadioButton
+                android:layout_margin="10dp"
                 android:id="@+id/montage_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -59,7 +60,8 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="Montage"
-                android:textSize="20sp" />
+                android:textSize="10sp"
+                android:drawableTop="@drawable/montage_btn"/>
 
             <RadioButton
                 android:id="@+id/my_rb"
