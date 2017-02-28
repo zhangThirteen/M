@@ -37,7 +37,7 @@
                 android:button="@null"
                 android:checked="true"
                 android:gravity="center"
-                android:drawableTop="@drawable/message_btn"
+                android:drawableTop="@drawable/movie_btn"
                 android:text="Movie"
                 android:textSize="10sp" />
 
@@ -66,6 +66,7 @@
                 android:drawableTop="@drawable/montage_btn"/>
 
             <RadioButton
+                android:layout_margin="10dp"
                 android:id="@+id/my_rb"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -73,7 +74,8 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="My"
-                android:textSize="20sp" />
+                android:textSize="10sp"
+                android:drawableTop="@drawable/my_btn"/>
         </RadioGroup>
     </LinearLayout>
 
