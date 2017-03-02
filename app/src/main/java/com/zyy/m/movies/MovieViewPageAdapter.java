@@ -30,8 +30,9 @@ public class MovieViewPageAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-
+        Log.e("test", "instantiadesrfsdfteItem: "+position+"jjjj:"+views.length);
         View adapterView = views[position%views.length];
+        Log.e("test", "instantiateItem: "+position%views.length);
         if (container.indexOfChild(adapterView)!=-1){
             container.removeView(adapterView);
         }

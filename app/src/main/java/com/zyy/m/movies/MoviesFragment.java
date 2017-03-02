@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,17 @@ public class MoviesFragment extends Fragment {
     private View[] viewPageView;
     private MovieViewPageAdapter movieViewPageAdapter;
 
+    private final int STOP = -1;
+    private final int SUSPEND = 0;
+    private final int RUNNING = 1;
+
+    boolean b = true;
+    private int status = 1;
+
+    Thread thread;
+    Runnable runnable;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,7 +85,17 @@ public class MoviesFragment extends Fragment {
         }
         movieTestViewPageImageAdd();
 
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        status = RUNNING;
+        if (b) {
+            carouselImageByThread();
+        }
     }
 
     private void ViewPageInit(List<String> list) {
@@ -132,8 +154,11 @@ public class MoviesFragment extends Fragment {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imageView);
         }
+
         movieViewPageAdapter = new MovieViewPageAdapter(viewPageView);
+
         movieViewpage.setAdapter(movieViewPageAdapter);
+
 
         movieViewpage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -144,8 +169,10 @@ public class MoviesFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+
                 int i = position % movieTopViewPageImageList.size();
-                switch (position) {
+                Log.e("test", "onPageSelected: " + i);
+                switch (i) {
                     case 0:
                         movieTopRb1.setChecked(true);
                         break;
@@ -169,12 +196,25 @@ public class MoviesFragment extends Fragment {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+//                switch (state){
+//                    case 0:
+//                        status = RUNNING;
+//                        break;
+//                    case 1:
+//                        status = SUSPEND;
+//                        break;
+//                    case 2:
+//                        status = RUNNING;
+//                        break;
+//                }
             }
         });
+
+
     }
 
     private void movieTestViewPageImageAdd() {
+        b = false;
         movieTopViewPageImageList = new ArrayList<>();
         movieTopViewPageImageList.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3744774895,3225840198&fm=15&gp=0.jpg");
         movieTopViewPageImageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1049190591,3919560657&fm=15&gp=0.jpg");
@@ -185,19 +225,79 @@ public class MoviesFragment extends Fragment {
 
 
         ViewPageInit(movieTopViewPageImageList);
-
-        carouselImageByThread(false);
+        carouselImageByThread();
 
     }
 
-    private void carouselImageByThread(boolean b) {
-        if (b) {
-           new Thread(new Runnable() {
-               @Override
-               public void run() {
+    private void carouselImageByThread() {
 
-               }
-           }).start();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (status != STOP) {
+
+                    if (status == SUSPEND) {
+                        try {
+                            getActivity().wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+
+
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.e("test", "run: " + movieViewpage.getCurrentItem());
+                                movieViewpage.setCurrentItem(movieViewpage.getCurrentItem() + 1);
+                            }
+                        });
+
+                    }
+                }
+            }
+        }).start();
+
+
+//        if (b) {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    while (true && getActivity() != null) {
+//                        /**
+//                         * 操作UI必须在主线程执行！
+//                         */
+//
+//
+//                        try {
+//                            Thread.sleep(3000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                        getActivity().runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                Log.e("test", "run: "+movieViewpage.getCurrentItem());
+//                                movieViewpage.setCurrentItem(movieViewpage.getCurrentItem() + 1);
+//                            }
+//                        });
+//                    }
+//                }
+//            }).start();
+    }
+
+
+    @Override
+    public void onPause() {
+        status = STOP;
+        b = true;
+        super.onPause();
+
     }
 }
